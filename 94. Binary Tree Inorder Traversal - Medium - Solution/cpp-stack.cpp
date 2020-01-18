@@ -32,3 +32,32 @@ public:
         return res;
     }
 };
+
+class Solution {
+public:
+    vector<int> inorderTraversal(TreeNode* root) {
+        vector<int> res;
+        if (root == nullptr) {
+            return res;
+        }
+        
+        std::stack<TreeNode *> s;
+        TreeNode * curr = root;
+        while (!s.empty() || curr) {
+            while (curr != nullptr) {
+                s.push(curr);
+                curr = curr->left;
+            }
+            
+            curr = s.top();
+            s.pop();
+
+            res.push_back(curr->val);
+            curr = curr->right;
+                
+        }
+        
+        
+        return res;
+    }
+};
